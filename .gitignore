@@ -1,3 +1,6 @@
+# Secret
+app.cfg.json
+
 # Redis
 *.rdb
 

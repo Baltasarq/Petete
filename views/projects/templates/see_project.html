@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <table><tr>
+    <td style="width:25%">
+    <img src="{{ url_for("projects.static", filename="project.svg") }}"/>
+    </td><td>
+    <h2>{{ project.title }}</h2>
+    </td></tr></table>
+{% endblock %}
+{% block main %}
+    {% set final_mark = project.final_mark %}
+    
+    <div id="dvProject">
+        <ul>
+            <li>{{ project.notes }}</li>
+            <li><button class="btTool" onclick="window.location='{{ url_for("students.see", id=student.safe_id) }}'">
+                    <img alt="see" src="{{ url_for("static", filename="see.svg") }}" />
+                </button>
+                {{ student.complete_name }}
+            </li>
+            <li><img alt="Nota" src="{{ url_for("static", filename="edit.svg") }}" />
+                Nota final: {% if final_mark %}
+                                {{ final_mark }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+            </li>
+        </ul>
+        <div dv="dvMarks" class="pnlScroll">
+        {% if final_mark %}
+            <p>
+            {% for mark in project.all_marks %}
+                <p>{% include "mark_line.html" %}</p>
+            {% endfor %}
+            </p>
+        {% else %}
+            <b>¡Todavía no tienes calificaciones para este proyecto!</b>
+        {% endif %}
+        </div>
+    </div>
+    <p>
+    <div id="dvOps">
+        &nbsp;<button onclick="window.location='{{ url_for("marks.add", id=project.safe_id) }}'">
+            <img src="{{ url_for("static", filename="add.svg") }}" />
+        </button>&nbsp;Nueva calificación
+        &nbsp;<button onclick="window.location='{{ url_for("marks.delete_all", id=project.safe_id) }}'">
+            <img src="{{ url_for("static", filename="delete.svg") }}" />
+        </button>&nbsp;Borrar todas
+    </div>
+{% endblock %}

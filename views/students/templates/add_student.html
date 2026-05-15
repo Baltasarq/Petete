@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block scripts %}
+    {{ super() }}
+    <!-- Scripts by add_student -->
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <div id="dvSubheader">
+        <h2>Nuevo estudiante</h2>
+    </div>
+{% endblock %}
+{% block main %}
+        <div id="dvFormStudent">
+            <form id="frmStudent"
+                    method="POST"
+                    action="{{ url_for( "students.add" ) }}">
+                <label for="edEmail">e.mail</label>
+                <input type="text" name="edEmail" id="edEmail" />
+                <br/>
+                <label for="edSurname">Apellidos</label>
+                <input type="text" name="edSurname" id="edSurname"/>
+                <br/>
+                <label for="edName">Nombre</label>
+                <input type="text" name="edName" id="edName"/>
+                <br/>
+                <label for="edCourse">Curso</label>
+                <input type="number" name="edCourse" id="edCourse"  value="2000" />
+                <br/>
+                <button type="submit" id="btSubmit" name="btSubmit">
+                    <img src="{{ url_for("static", filename="add.svg" )}}" />
+                    &nbsp;<span id="txtSubmitText">Crea nuevo estudiante</span>
+                </button>
+            </form>
+        </div>
+{% endblock %}

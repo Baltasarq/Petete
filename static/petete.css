@@ -1,0 +1,12 @@
+.dvErrorMsg {
+    color: white; background-color: red; padding: 10px
+}
+.btTool {
+    color: white; background-color: #cc7000;
+    margin=5px; padding: 5px
+}
+.pnlScroll {
+    margin-left: 50px; height: 400px;
+    padding: 10px;
+    overflow: auto; border: 1px solid white
+}

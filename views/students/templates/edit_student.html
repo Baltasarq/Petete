@@ -1,0 +1,26 @@
+{% extends "add_student.html" %}
+
+{% block scripts %}
+    {{ super() }}
+
+    <!-- Scripts from edit student -->
+    <script>
+        window.onload = function() {
+            const dvSubheader = document.getElementById( "dvSubheader" );
+            const edEmail = document.getElementById( "edEmail" );
+            const edSurname = document.getElementById( "edSurname" );
+            const edName = document.getElementById( "edName" );
+            const edCourse = document.getElementById( "edCourse" );
+            const txtSubmitText = document.getElementById( "txtSubmitText" );
+            const frmStudent = document.getElementById( "frmStudent" );
+
+            frmStudent.action = "{{ url_for("students.edit", id=student.safe_id) }}";
+            edSurname.value = "{{ student.surname }}";
+            edName.value = "{{ student.name }}";
+            edEmail.value = "{{ student.email }}";
+            edCourse.value = "{{ student.course }}";
+            txtSubmitText.innerText = "Modifica estudiante";
+            dvSubheader.innerHTML = "<h2>Modifica estudiante</h2>";
+        }
+    </script>
+{% endblock %}

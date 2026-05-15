@@ -1,0 +1,22 @@
+{% extends "add_project.html" %}
+
+{% block scripts %}
+    {{ super() }}
+
+    <!-- Scripts from edit student -->
+    <script>
+        window.onload = function() {
+            const dvSubheader = document.getElementById( "dvSubheader" );
+            const edTitle = document.getElementById( "edTitle" );
+            const edNotes = document.getElementById( "edNotes" );
+            const txtSubmitText = document.getElementById( "txtSubmitText" );
+            const frmProject = document.getElementById( "frmProject" );
+
+            frmProject.action = "{{ url_for("projects.edit", id=project.safe_id) }}";
+            edTitle.value = "{{ project.title }}";
+            edNotes.value = "{{ project.notes }}";
+            txtSubmitText.innerText = "Modifica projecto";
+            dvSubheader.innerHTML = "<h2>Modifica proyecto</h2>";
+        }
+    </script>
+{% endblock %}

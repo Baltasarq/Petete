@@ -1,0 +1,24 @@
+<p>
+<button class="btTool" onclick="window.location='{{ url_for("projects.see", id=project.safe_id) }}'">
+    <img alt="Ver" src="{{ url_for("static", filename="see.svg") }}" />
+</button>
+<button class="btTool" onclick="window.location='{{ url_for("projects.edit", id=project.safe_id) }}'">
+    <img alt="Edita" src="{{ url_for("static", filename="edit.svg") }}" />
+</button>
+<button class="btTool" onclick="window.location='{{ url_for("projects.delete", id=project.safe_id) }}'">
+    <img alt="Borra" src="{{ url_for("static", filename="delete.svg") }}" />
+</button>
+{{ project.title }}
+<br/>
+<ul>
+    <li>
+        {% set final_mark = project.final_mark %}
+        {% if final_mark %}
+            {{ project.final_mark }}
+        {% else %}
+            N/A
+        {% endif %}
+    </li>
+    <li>{{ project.notes }}</li>
+</ul>
+</p>

@@ -1,0 +1,7 @@
+<button class="btTool" onclick="window.location='{{ url_for("marks.edit", id=project.safe_id, year=mark[0], month=mark[1].name) }}'">
+    <img alt="Nota" src="{{ url_for("static", filename="edit.svg") }}" />
+</button>
+<button class="btTool" onclick="window.location='{{ url_for("marks.delete", id=project.safe_id, year=mark[0], month=mark[1].name) }}'">
+    <img alt="Nota" src="{{ url_for("static", filename="delete.svg") }}" />
+</button>
+{{ mark[1].name }}/{{ mark[0] }}: {{ "{:05.2f}".format(mark[2]) }}

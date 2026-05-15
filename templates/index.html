@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <h2>Login</h2>
+{% endblock %}
+{% block main %}
+        <div id="dvFormLogin">
+            <form id="frmLogin" method="POST" action="{{ url_for("users.login") }}">
+                <label for="edEmail">e.mail</label>
+                <input type="text" name="edEmail" />
+                <br/>
+                <label for="edPassword">Password</label>
+                <input type="password" name="edPassword" />
+                <br/>
+                <button type="submit"/>
+                    <img src="{{ url_for("static", filename="login.svg") }}"
+                            alt="Submit" />
+                </button>
+            </form>
+        </div>
+        <p>
+        <div id="dvOps">
+            <button class="btTool" onclick="window.location='{{ url_for("users.add") }}'">Nuevo usuario</button>
+        </div>
+{% endblock %}

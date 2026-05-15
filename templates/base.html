@@ -1,0 +1,54 @@
+<!DOCType html>
+<html lang="es">
+    <!-- (c) {{ AppInfo.title() }} MIT License <jbgarcia@uvigo.es> -->
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ AppInfo.title() }}</title>
+        <link rel="stylesheet" href="{{ url_for("static", filename="pico.classless.min.css") }}" />
+        <link rel="stylesheet" href="{{ url_for("static", filename="petete.css") }}" />
+        {% block scripts %}
+            <!-- Scripts from base -->
+        {% endblock %}
+    </head>
+    <body>
+    <header>
+    {% block head %}
+        <table><tr>
+        <td style="width:25%">
+            <button onclick="window.location='{{ url_for("students.list_all") }}'">
+                <img
+                    style="width:32px"
+                    src="{{ url_for( "static", filename="home.svg" ) }}" />
+            </button>
+        </td><td style="width:50%">
+            <h1>{{ AppInfo.name() }}</h1>
+        </td><td style="text-align: right">
+        {% if usr %}
+            <button onclick="window.location='{{ url_for("users.logout") }}'">
+                <img src="{{ url_for("static", filename="logout.svg") }}" />
+                &nbsp;<small>{{ usr.email }}</small>
+            </button>
+        {% endif %}
+        </td></tr></table>
+    {% endblock %}
+    </header>
+    <p>
+    <main>
+    {% block main %}
+    {% endblock %}
+    </main>
+    <p>
+    <footer>
+    {% block foot %}
+        <div id="dvError">
+            {% set error_msgs = get_flashed_messages() %}
+            {% if error_msgs %}
+                    {% for msg in error_msgs %}
+                        <p class="dvErrorMsg">{{ msg }}</p>
+                    {% endfor %}
+            {% endif %}
+        </div>
+    {% endblock %}
+    </footer>
+</body>
+</html>

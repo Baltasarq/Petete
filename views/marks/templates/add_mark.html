@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block scripts %}
+    {{ super() }}
+    <!-- Scripts by add_mark -->
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <div id="dvSubheader">
+        <h2>Nueva calificación</h2>
+    </div>
+{% endblock %}
+{% block main %}
+        <div id="dvFormMark">
+            <form id="frmMark"
+                    method="POST"
+                    action="{{ url_for( "marks.add", id=project.safe_id ) }}">
+                <label for="edYear">Año</label>
+                <input type="number" name="edYear" id="edYear" value="2020"/>
+                <br/>
+                <label for="edMonth">Convocatoria</label>
+                <select id="edMonth" name="edMonth">
+                    {% for v in Months %}
+                        <option value="{{ v.name }}">{{ v.name.capitalize() }}</option>
+                    {% endfor %}
+                </select>
+                <br/>
+                <label for="edMark">Calificación</label>
+                <input
+                        type="number"
+                        name="edMark"
+                        id="edMark"
+                        value="4" step="0.05"/>
+                <br/>
+                <button type="submit" id="btSubmit" name="btSubmit">
+                    <img src="{{ url_for("static", filename="add.svg" )}}" />
+                    &nbsp;<span id="txtSubmitText">Crea nueva calificación</span>
+                </button>
+            </form>
+        </div>
+{% endblock %}

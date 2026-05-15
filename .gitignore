@@ -1,3 +1,14 @@
+# Redis
+*.rdb
+
+# Compiled
+*.pyc
+__pycache__
+
+# Backups
+*~
+*.bak
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

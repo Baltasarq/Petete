@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <table><tr>
+    <td style="width:25%">
+    <img src="{{ url_for("students.static", filename="student.svg") }}"/>
+    </td><td>
+    <h2>{{ student.surname }}, {{ student.name }}: {{ student.email }}</h2>
+    </td></tr></table>
+{% endblock %}
+{% block main %}
+    <div id="dvStudent" class="pnlScroll">
+        {% if student_projects %}
+            <p>
+            {% for project in student_projects %}
+                {% include "project_line.html" %}
+            {% endfor %}
+            </p>
+        {% else %}
+            <b>¡Todavía no tienes proyectos corregidos para este estudiante!</b>
+        {% endif %}
+    </div>
+    <p>
+    <div id="dvOps">
+        &nbsp;<button onclick="window.location='{{ url_for("projects.add", id=student.safe_id) }}'">
+            <img src="{{ url_for("projects.static", filename="project.svg") }}" />
+        </button>&nbsp;Nuevo proyecto
+    </div>
+{% endblock %}

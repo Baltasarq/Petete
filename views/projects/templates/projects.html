@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <table><tr>
+    <td style="width:25%">
+    <img src="{{ url_for("projects.static", filename="project.svg") }}"/>
+    </td><td>
+    <h2>Proyectos</h2>
+    </td></tr></table>
+{% endblock %}
+{% block main %}
+    <div id="dvProjects">
+        {% if projects %}
+            <ul>
+            {% for project in projects %}
+                <li>{% include "project_line.html" %}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <b>¡Todavía no tienes proyectos corregidos!</b>
+        {% endif %}
+    </div>
+    <p>
+    <div id="dvOps">
+        <button onclick="window.location='/projects/add'">Nuevo proyecto</button>
+    </div>
+{% endblock %}

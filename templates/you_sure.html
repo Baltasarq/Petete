@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <div id="dvSubheader">
+        <h2>{{ msg }}</h2>
+    </div>
+{% endblock %}
+{% block main %}
+    <p style="text-align: justify">{{ explain }}</p>
+    <p>
+        <button onclick="document.getElementById('frmDelete').submit()">
+            {{ action }}
+        </button>
+        <button onclick="window.location='{{ cancel_url }}'">{{ cancel }}</button>
+    </p>
+    <div id="dvHiddenForm" style="display: none">
+        <form id="frmDelete" action={{ action_url }} method="POST"></form>
+    </div>
+{% endblock %}

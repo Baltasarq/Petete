@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <table><tr>
+    <td style="width:25%">
+    <img src="{{ url_for("students.static", filename="student.svg") }}"/>
+    </td><td>
+    <h2>Estudiantes</h2>
+    </td></tr></table>
+{% endblock %}
+{% block main %}
+    <div id="dvStudents" class="pnlScroll">
+        {% if students %}
+            {% for student in students %}
+                <p>{% include "student_line.html" %}</p>
+            {% endfor %}
+        {% else %}
+            <b>¡Todavía no tienes estudiantes registrados!</b>
+        {% endif %}
+    </div>
+    <p>
+    <div id="dvOps">
+        <button
+            onclick="window.location='{{ url_for("students.add") }}'">
+            <img src="{{ url_for("static", filename="add.svg") }}" />
+            &nbsp;Nuevo estudiante
+        </button>
+        <button
+            onclick="window.location='{{ url_for("students.delete_students_of_course") }}'">
+            <img src="{{ url_for("static", filename="delete.svg") }}" />
+            &nbsp;Borra alumnos de un curso
+        </button>
+    </div>
+{% endblock %}

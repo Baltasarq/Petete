@@ -1,0 +1,26 @@
+{% extends "add_mark.html" %}
+
+{% block scripts %}
+    {{ super() }}
+
+    <!-- Scripts from edit mark -->
+    <script>
+        window.onload = function() {
+            const dvSubheader = document.getElementById( "dvSubheader" );
+            const edYear = document.getElementById( "edYear" );
+            const edMonth = document.getElementById( "edMonth" );
+            const edMark = document.getElementById( "edMark" );
+            const txtSubmitText = document.getElementById( "txtSubmitText" );
+            const frmMark = document.getElementById( "frmMark" );
+
+            frmMark.action = {{ url_for("marks.edit", year=mark[0], month=mark[1].name, id=project.safe_id) | tojson }};
+            edYear.value = "{{ mark[0] }}";
+            edYear.readOnly = true;
+            edMonth.value = "{{ mark[1].name }}";
+            edMonth.disabled = true;
+            edMark.value = "{{ mark[2] }}";
+            txtSubmitText.innerText = "Modifica calificación: {{ str_mark }}";
+            dvSubheader.innerHTML = "<h2>Modifica calificación</h2>";
+        }
+    </script>
+{% endblock %}

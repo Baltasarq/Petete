@@ -1,0 +1,10 @@
+<button alt="Ver" class="btTool" onclick="window.location='{{ url_for("students.see", id=student.safe_id) }}'">
+    <img alt="Ver" src="{{ url_for("static", filename="see.svg") }}" />
+</button>
+<button class="btTool" onclick="window.location='{{ url_for('students.edit', id=student.safe_id) }}'">
+    <img alt="Edita" src="{{ url_for("static", filename="edit.svg") }}" />
+</button>
+<button class="btTool" onclick="window.location='{{ url_for("students.delete", id=student.safe_id) }}'">
+    <img alt="Borra" src="{{ url_for("static", filename="delete.svg") }}" />
+</button>
+{{ student.formatted_course() }} {{ student.email }} / {{ student.surname }}, {{ student.name }}

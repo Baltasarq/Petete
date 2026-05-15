@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block scripts %}
+    {{ super() }}
+    <!-- Scripts by add_project -->
+{% endblock %}
+{% block head %}
+    {{ super() }}
+    <div id="dvSubheader">
+        <h2>Nuevo proyecto</h2>
+    </div>
+{% endblock %}
+{% block main %}
+        <div id="dvFormProject">
+            <form id="frmProject"
+                    method="POST"
+                    action="{{ url_for( "projects.add", id=student.safe_id ) }}">
+                <label for="edTitle">Título</label>
+                <input type="text" name="edTitle" id="edTitle" />
+                <br/>
+                <label for="edNotes">Notas</label>
+                <input type="text" name="edNotes" id="edNotes"/>
+                <br/>
+                <button type="submit" id="btSubmit" name="btSubmit">
+                    <img src="{{ url_for("static", filename="add.svg" )}}" />
+                    &nbsp;<span id="txtSubmitText">Crea nuevo proyecto</span>
+                </button>
+            </form>
+        </div>
+{% endblock %}

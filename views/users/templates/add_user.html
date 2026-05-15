@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    <h2>Nuevo usuario</h2>
+{% endblock %}
+{% block main %}
+        <div id="dvFormLogin">        
+            <form id="frmLogin" method="POST" action="/users/add">
+                <label for="edEmail">e.mail</label>
+                <input type="text" name="edEmail" />
+                <br/>
+                <label for="edPassword">Password</label>
+                <input type="password" name="edPassword" />
+                <br/>
+                <input type="submit" name="btSubmit" value="Crea nuevo usuario">
+            </form>
+        </div>
+{% endblock %}
+
